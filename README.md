@@ -4,7 +4,7 @@ This repository contains code for a simulation testing framework for the stock a
 
 #### Description
 
-R: This folder contains R files for data processing and model-fitting
+R: This folder contains R files for running simulation tests and diagnostic tests
 
 `simtest_wales_lobster.R`: a script for running simulation testing
 
@@ -19,3 +19,11 @@ R: This folder contains R files for data processing and model-fitting
 `em_scenarios_wales_lobster.R`: a function for specifying EM scenarios
 
 `generate_om_em_id.R`: a function for generating a scenario ID for OM & EM combinations
+
+`diagnostics_wales_lobster.R`: a script for running diagnostic tests (retrospective analysis, likelihood profiling, age-structured production modeling, and residual analysis) for each EM
+
+`aspm.R`: a function for running age-structured production modeling for each EM
+
+`likelihood.R`: a function for running likelihood profiling for each EM 
+
+`retrospective.R`: a function for running retrospective analysis for each EM
