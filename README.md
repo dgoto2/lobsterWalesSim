@@ -41,9 +41,9 @@ pak::pkg_install("ss3sim/ss3sim")
 ```
 
 ## Running simulations
-To run simulations, see `R/simtest_wales_lobster.R`. The script contains the configuration for conditioning OM and running OM and EM scenarios. The script is currently set up to run 16 EM scenarios: combinations of 1 to 4 parameter misspecifications (+/-10% bias in natural mortality, steepness, selectivity, and asymptotic length) for 6 OM scenarios (`om_scenarios_wales_lobster.R`):
+To run simulations, see `R/simtest_wales_lobster.R`. The script contains the configuration for conditioning OM and running OM and EM scenarios. The script is currently set up to run 16 EM scenarios: combinations of 1 to 4 parameter misspecifications (+/-10% bias in natural mortality, steepness, selectivity, and asymptotic length) for 6 OM scenarios (`R/om_scenarios_wales_lobster.R`):
 ```r
-# EM scenarios - modify param values for misspecification scenarios: Value that results in ~10% decrease/increase in terminal SSB (see em_scenarios_wales_lobster.R)
+# EM scenarios - modify param values for misspecification scenarios: Value that results in ~10% decrease/increase in terminal SSB (see R/em_scenarios_wales_lobster.R)
 # set up EM scenarios; 0 (base) to 1 (+10 bias) or -1 (-10% bias)
 scenario_em <- matrix(c(0,  0,  0,  0,
                         1,	0,	0,	0,
@@ -247,6 +247,21 @@ for (scen_em in 1:ncol(scenario_em)) {
   # stop the cluster
   stopCluster(cl)
 }
+
+
+# plot SSB from the 1st iteration of OM and EM
+iter <- 1
+r_om1 <- r4ss::SS_output(file.path(file.path(dir.main, scenario, iter), "om"),
+                         verbose = FALSE, 
+                         printstats = FALSE, 
+                         covar = TRUE)
+r_em1 <- r4ss::SS_output(file.path(file.path(dir.main, scenario, iter), "em"),
+                         verbose = FALSE, 
+                         printstats = FALSE, 
+                         covar = TRUE)
+r4ss::SSplotComparisons(r4ss::SSsummarize(list(r_om1, r_em1)),
+                        legendlabels = c(paste0("OM", iter), paste0("EM", iter)), 
+                        subplots = 2)
 
 ```
 
