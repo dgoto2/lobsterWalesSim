@@ -43,6 +43,27 @@ pak::pkg_install("ss3sim/ss3sim")
 ## Running simulations
 To run simulations, see `R/simtest_wales_lobster.R`. The script contains the configuration for conditioning OM and running OM and EM scenarios. The script is currently set up to run 16 EM scenarios: combinations of 1 to 4 parameter misspecifications (+/-10% bias in natural mortality, steepness, selectivity, and asymptotic length) for 6 OM scenarios (`R/om_scenarios_wales_lobster.R`):
 ```r
+
+# load functions to condition base, set om & em scenarios,and update om & em
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+source("condition_base_wales_lobster.R")
+source("om_scenarios_wales_lobster.R")
+source("em_scenarios_wales_lobster.R")
+source("generate_om_em_id.R")
+source("update_om_wales_lobster.R")
+source("update_em_wales_lobster.R")
+
+# set up the base model
+setwd("..")
+dir.main <- getwd()
+dir.base <- file.path(dir.main, "base_model")
+nyears <- 50 # n of forecasting simulation years
+nboot <- 3 # n of bootstrapped data files
+niter <- nboot
+ss3exe <- file.path(dir.base, "ss3_win.exe")
+extras_om <- " -nohess" # if not estimating parameters
+extras_em <- " " # if estimating parameters
+
 # EM scenarios - modify param values for misspecification scenarios: Value that results in ~10% decrease/increase in terminal SSB (see R/em_scenarios_wales_lobster.R)
 # set up EM scenarios; 0 (base) to 1 (+10 bias) or -1 (-10% bias)
 scenario_em <- matrix(c(0,  0,  0,  0,
