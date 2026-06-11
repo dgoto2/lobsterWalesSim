@@ -23,29 +23,29 @@
 #' @F_Method A key for fishing mortality estimation method in control 
 #' @overwrite TRUE or FALSE for overwriting Stock Synthesis files
 #' 
-condition_base <- function(fore_base=fore_base, 
-                           start_base=start_base, 
-                           dat_base=dat_base, 
-                           ctl_base=ctl_base, 
-                           dir.base=dir.base, 
-                           nyears=nyears, 
-                           datfile="ss3.dat", 
-                           ctlfile="ss3.ctl" ,
-                           fleet_catch=c(2:8), 
-                           fleet_cpue=unique(dat_base$CPUE$index), 
-                           fleet_discard=c(1,2,3), 
-                           len_sex=3, 
-                           len_Nsamp=1, 
-                           dat_month=7,
-                           fleet_obs=1, 
-                           fleet_historical=c(2, 6), 
-                           fleet_target=c(3, 4, 5), 
-                           fleet_bycatch=c(7, 8), 
-                           fleet_prerecruit=9,
-                           fleet_len <- unique(dat_base$lencomp$fleet),
-                           len_part=c(0), # 0=all; 1=discard; 2=retained
-                           F_Method=2,
-                           overwrite=TRUE) {
+condition_base <- function(fore_base = fore_base, 
+                           start_base = start_base, 
+                           dat_base = dat_base, 
+                           ctl_base = ctl_base, 
+                           dir.base = dir.base, 
+                           nyears = nyears, 
+                           datfile = "ss3.dat", 
+                           ctlfile = "ss3.ctl" ,
+                           fleet_catch = c(2:8), 
+                           fleet_cpue = unique(dat_base$CPUE$index), 
+                           fleet_discard = c(1,2,3), 
+                           len_sex = 3, 
+                           len_Nsamp = 1, 
+                           dat_month = 7,
+                           fleet_obs = 1, 
+                           fleet_historical = c(2, 6), 
+                           fleet_target = c(3, 4, 5), 
+                           fleet_bycatch = c(7, 8), 
+                           fleet_prerecruit = 9,
+                           fleet_len = unique(dat_base$lencomp$fleet),
+                           len_part = c(0), # 0=all; 1=discard; 2=retained
+                           F_Method = 2,
+                           overwrite = TRUE) {
   
   # forecast
   fore_base$Do_West_Coast_gfish_rebuilder_output <- 0
@@ -135,7 +135,7 @@ condition_base <- function(fore_base=fore_base,
   dat_base$CPUE <- cpue_expand
   dat_base$discard_data <- discard_expand
   dat_base$lencomp <- lencomp_expand
-  cat("endyr:"); pprint(dat_base$endyr <- dat_base$endyr + nyears) # adding forecast/sim years 
+  cat("endyr:"); print(dat_base$endyr <- dat_base$endyr + nyears) # adding forecast/sim years 
 
   r4ss::SS_writedat(dat_base, outfile = file.path(dir.base, "ss3.dat"), overwrite=overwrite)
 

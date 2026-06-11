@@ -2,7 +2,7 @@
 
 # a.OM scenarios
 # 1.varying fishing mortality (F:high, low)
-# 2.varying variance in stock productivity (V:high, meidum, low)
+# 2.varying variance in stock productivity (V:high, medium, low)
 
 # EM scenarios (for each OM scenario)
 # misspecification (low or high) in:
@@ -17,8 +17,8 @@ required <- c("ss3sim", "r4ss", "foreach", "doParallel", "stats", "dplyr", "pak"
 installed <- rownames(installed.packages())
 (not_installed <- required[!required %in% installed])
 install.packages(not_installed[!not_installed %in% c("r4ss", "ss3sim")], dependencies = TRUE)
-if (not_installed %in% "r4ss") {pak::pkg_install("r4ss/r4ss")}
-if (not_installed %in% "ss3sim") {pak::pkg_install("ss3sim/ss3sim")}
+pak::pkg_install("r4ss/r4ss")
+pak::pkg_install("ss3sim/ss3sim")
 
 
 # load functions to condition base, set om & em scenarios,and update om & em
@@ -38,7 +38,7 @@ dir.base <- file.path(dir.main, "base_model")
 nyears <- 50 # n of forecasting simulation years
 nboot <- 3 # n of bootstrapped data files
 niter <- nboot
-ss3exe <- file.path(dir.main, "ss3_win.exe")
+ss3exe <- file.path(dir.base, "ss3_win.exe")
 extras_om <- " -nohess" # if not estimating parameters
 extras_em <- " " # if estimating parameters
 
@@ -75,6 +75,7 @@ condition_base(fore_base = fore_base,
 r4ss::copy_SS_inputs(dir.old = dir.base, 
                      dir.new = "test_base_model_dir", 
                      overwrite = TRUE)
+
 r4ss::run(dir = "test_base_model_dir", 
           extras = extras_om, 
           exe = ss3exe, 
@@ -120,7 +121,7 @@ scenario_om <- 0 # 0 (base) to 6
 (F_multi <- om_scenario(scenario_om)[1])
 (sigmaR_dev <- om_scenario(scenario_om)[2])
 
-iteration <- 100
+iteration <- 3
 extra_cores <- 4
 
 # run simulations though em scenarios
