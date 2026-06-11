@@ -121,7 +121,7 @@ scenario_om <- 0 # 0 (base) to 6
 (F_multi <- om_scenario(scenario_om)[1])
 (sigmaR_dev <- om_scenario(scenario_om)[2])
 
-iteration <- 3
+iteration <- 100
 extra_cores <- 4
 
 # run simulations though em scenarios

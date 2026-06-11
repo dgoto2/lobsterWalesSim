@@ -5706,3 +5706,21 @@ Finished lencomp obj_fun  662.085 272.859 21.2898 0 0 0 0 0 0
  catch -log(L)  0 221795 2.1318e+07 1.28442e+07 853434 107710 601661 601481 0
 Finished recruitdev obj_fun -55.8807 97 0.448562
  OK with obj_func 3.65531e+07
+Iterations: 10512
+Calculated Fspr 0.358178 0.35
+Calculated Btgt: 0.343238 0.35
+Calculated Fmsy 0.412393 105.214
+Finished calculating benchmarks
+Finished forecast
+Writing wtatage.ss_new
+Finished StdDev quantities
+Finished posteriors
+Finished SS_summary.sso
+Finished final writing of report.sso
+Begin writing data_echo.ss_new file
+Begin writing data_expval.ss file
+Begin writing bootstrap data file(s)
+Write starter.ss_new file 
+Write forecast.ss_new file 
+Write control.ss_new file 
+Begin final output calculations and warnings
