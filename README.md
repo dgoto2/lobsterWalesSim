@@ -250,4 +250,9 @@ for (scen_em in 1:ncol(scenario_em)) {
 
 ```
 
+##### Time series of spawning stock biomass from 1 iteration of OM and EM under the baseline scenario
+<p align="center">
+<img src="https://github.com/Sustainable-Fisheries-Wales/lobsterWalesSim/blob/main/plots/wales_lobster_base_em_om_comparison.png?raw=true" width="600"> 
+</p>
+
 ```~~~
