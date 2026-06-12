@@ -286,7 +286,7 @@ r4ss::SSplotComparisons(r4ss::SSsummarize(list(r_om1, r_em1)),
 
 ```
 
-##### Time series of spawning stock biomass from 1 iteration of OM and EM under the baseline scenario
+##### Example time series of spawning stock biomass from 1 iteration of OM and EM under the baseline scenario
 <p align="center">
 <img src="https://github.com/Sustainable-Fisheries-Wales/lobsterWalesSim/blob/main/plots/wales_lobster_base_em_om_comparison.png?raw=true" width="600"> 
 </p>
