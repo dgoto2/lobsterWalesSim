@@ -20,6 +20,8 @@ R: This folder contains R files for running simulation tests and diagnostic test
 
 `generate_om_em_id.R`: a function for generating a scenario ID for OM & EM combinations
 
+`post_processing_wales_lobster.R`: a script for calculating model convergence rates and post-processing model outputs
+
 `diagnostics_wales_lobster.R`: a script for running diagnostic tests (retrospective analysis, likelihood profiling, age-structured production modeling, and residual analysis) for each EM
 
 `aspm.R`: a function for running age-structured production modeling for each EM
